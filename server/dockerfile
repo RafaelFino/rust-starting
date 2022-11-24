@@ -1,0 +1,12 @@
+FROM ubuntu
+
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt install -y curl zsh git vim jq htop exa build-essential
+
+WORKDIR /usr/app
+COPY . .
+
+RUN ./install-rust.sh
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
